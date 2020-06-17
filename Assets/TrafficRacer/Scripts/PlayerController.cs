@@ -7,10 +7,12 @@ namespace TrafficRacer
     /// <summary>
     /// Script which controls the player
     /// </summary>
+    [RequireComponent(typeof(Rigidbody))]   //make sure the gameobject which has this script has rigidbody on it
     public class PlayerController : MonoBehaviour
     {
         private Collider colliderComponent;                         //ref to collider component
         private float endXPos = 0;                                  //variable to change player x position
+        private Rigidbody myBody;
 
         private void OnDisable()
         {
@@ -19,6 +21,9 @@ namespace TrafficRacer
 
         private void Start()
         {
+            myBody = gameObject.GetComponent<Rigidbody>();          //get reference to Rigidbody
+            myBody.isKinematic = true;                              //set isKinematic to false
+            myBody.useGravity = false;                              //set useGravity ture
             CameraFollow.instance.SetTarget(this.gameObject);       //set Camera target
             SpawnVehicle(GameManager.singeton.currentCarIndex);     //spawn the selected car
         }
@@ -69,8 +74,8 @@ namespace TrafficRacer
                     DOTween.Kill(this);                             //kill the dotween of this object
                     LevelManager.instance.GameOver();               //call GameOver
                     colliderComponent.isTrigger = false;            //set isTrigger to false
-                    gameObject.GetComponent<Rigidbody>().isKinematic = false;   //set isKinematic to false
-                    gameObject.GetComponent<Rigidbody>().useGravity = true;     //set useGravity ture
+                    myBody.isKinematic = false;                     //set isKinematic to false
+                    myBody.useGravity = true;                       //set useGravity ture
                     //add a random force
                     gameObject.GetComponent<Rigidbody>().AddForce(Random.insideUnitCircle.normalized * 100f);
                 }

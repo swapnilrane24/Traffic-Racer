@@ -13,7 +13,6 @@ namespace TrafficRacer
 
         [SerializeField] private float moveSpeed = 8;               //speed with which game moves
         [SerializeField] private GameObject roadPrefab;             //ref to raod prefab
-        [SerializeField] private GameObject playerPrefab;           //ref to player prefab
         [SerializeField] private GameObject[] vehiclePrefabs;       //ref to all vehicle prefabs
 
 
@@ -53,7 +52,14 @@ namespace TrafficRacer
             enemyManager = new EnemyManager(nextRoadPos, moveSpeed);    //create EnemyManager
             enemyManager.SpawnEnemies(vehiclePrefabs);                  //spawn enemies
 
-            GameObject player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);   //spawn the player
+            SpawnPlayer();
+        }
+
+        void SpawnPlayer()                                              //method used to spawn player
+        {
+            GameObject player = new GameObject("Player");               //create Player gameobject
+            player.transform.position = Vector3.zero;                   //set its position to zero
+            player.AddComponent<PlayerController>();                    //attach PlayerController script to it
             playerController = player.GetComponent<PlayerController>(); //get reference to PlayerController
         }
 
