@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿/// <summary>
+/// File which holds enums used in game
+/// </summary>
 namespace TrafficRacer
 {
     public enum SwipeType

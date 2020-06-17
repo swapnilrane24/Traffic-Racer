@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace TrafficRacer
 {
+    /// <summary>
+    /// Script which keep track of game status and selected car 
+    /// </summary>
     public class GameManager : MonoBehaviour
     {
         public static GameManager singeton;
