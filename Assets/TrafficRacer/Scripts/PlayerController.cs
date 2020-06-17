@@ -24,7 +24,6 @@ namespace TrafficRacer
             myBody = gameObject.GetComponent<Rigidbody>();          //get reference to Rigidbody
             myBody.isKinematic = true;                              //set isKinematic to false
             myBody.useGravity = false;                              //set useGravity ture
-            CameraFollow.instance.SetTarget(this.gameObject);       //set Camera target
             SpawnVehicle(GameManager.singeton.currentCarIndex);     //spawn the selected car
         }
 

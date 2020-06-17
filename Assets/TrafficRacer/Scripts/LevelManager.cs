@@ -70,7 +70,7 @@ namespace TrafficRacer
                 roads[i].transform.Translate(-transform.forward * moveSpeed * Time.deltaTime);
             }
 
-            if (roads[trackRoadAtIndex].transform.position.z <= -10f)                  //if the road at 0th element is at z distance below -10
+            if (roads[trackRoadAtIndex].transform.position.z <= -10f)     //if the road at 0th element is at z distance below -10
             {
                 //lastTrack = trackRoadAtIndex - 1;                       //set lastTrack
                 //if (lastTrack < 0)                                      //check if lastTrack is less than 0
